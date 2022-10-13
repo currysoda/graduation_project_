@@ -1,0 +1,15 @@
+//- login.js
+html
+    head
+        title= `loginPage` 
+    body
+        h1 Sign in
+          form(action='/auth/login/password', method='POST')
+            p
+                | email:
+                input(type='text', id=`email`, name='email', value='')
+                br
+                | password: 
+                input(type='password',id=`password`, name='password', value='')
+                br
+                input(type='submit', value='Submit')
