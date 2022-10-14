@@ -10,13 +10,7 @@ module.exports = (app) => {
         // console.log(request.user);
         if(req.isAuthenticated()) {
 
-
-
-
-            
             res.render(`company.pug`);
-
-
 
         } else { 
             res.send(`please login`);
