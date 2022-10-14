@@ -14,9 +14,9 @@ app.use(helmet()); // 기본 보안
 var session = require(`express-session`);
 var FileStore = require(`session-file-store`)(session);
 
-app.locals.pretty = true; // jade 편하게 보기
+app.locals.pretty = true; // html 편하게 보기
 
-app.set('view engine', `pug`); // 템플릿 엔진 페이지 생성을 편안하게 하기 위해 있는 것 ?
+app.set('view engine', `pug`); // 템플릿 엔진 페이지 생성하기 위해 있는 것 ?
 app.set(`views`, `./views`); //
 app.engine(`html`, require(`pug`).renderFile);
 
