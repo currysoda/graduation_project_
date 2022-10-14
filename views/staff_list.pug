@@ -1,0 +1,15 @@
+//- register.js
+html
+    head
+        title= `registerPage` 
+    body
+        h1 Register Account
+          form(action='/register/register_account', method='POST')
+            p
+                | email:
+                input(type='text', id=`email`, name='email', value='')
+                br
+                | password: 
+                input(type='password',id=`password`, name='password', value='')
+                br
+                input(type='submit', value='Submit')
