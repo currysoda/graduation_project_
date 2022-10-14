@@ -17,5 +17,11 @@ module.exports = (app) => {
         }
     });
 
+    router.get('/staff_list',(req,res) => {
+        // console.log(request.user);
+        
+        res.send(`hi`);
+    });
+
     return router;
 }
