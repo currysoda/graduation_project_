@@ -1,10 +1,12 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
 
-# example data
+# custom 목록
 
 data/
 sessions/
+
+# .gitignore 생성기로 만든 목록
 
 ### Node ###
 # Logs
