@@ -1,4 +1,10 @@
-body{
-	background-color: black;
-	color: white;
+@charset "utf-8";
+
+body {
+	background-color: skyblue;
+	color: black;
+}
+
+h1 {
+	color : blue;
 }
