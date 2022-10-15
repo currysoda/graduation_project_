@@ -19,6 +19,8 @@ module.exports = (app) => {
 
     router.get('/staff_list',(req,res) => {
         // console.log(request.user);
+
+        
         
         res.render(`staff_list.pug`);
     });
