@@ -20,7 +20,9 @@ app.set('view engine', `pug`); // 템플릿 엔진 페이지 생성하기 위해
 app.set(`views`, `./views`); //
 app.engine(`html`, require(`pug`).renderFile);
 
-app.use(express.static(`public`)); // 정적 파일 서비스
+// app.use(express.static(path.join(__dirname,`public`))); // 이렇게 적으면 안됨
+
+app.use('/public', express.static(path.join(__dirname, 'public'))); // 정적 파일 서비스
 
 app.use(express.urlencoded({ extend : true}));
 app.use(express.json());
