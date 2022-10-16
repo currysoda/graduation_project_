@@ -1,0 +1,16 @@
+//- /company/create_company
+html
+    head
+        title= `create_company`
+        //- link(rel="stylesheet", href="../public/css/style.css")
+    body
+        h1 create_company 
+        form(action='/company/create_company/confirm', method='POST')
+            p
+                | company_name :
+                input(type='text', id=`email`, name='email', value='')
+                br
+                | email :
+                input(type='text', id=`email`, name='email', value='')
+                br
+                input(type='submit', value='Submit')

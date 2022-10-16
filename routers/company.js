@@ -17,10 +17,28 @@ module.exports = (app) => {
         }
     });
 
-    router.get('/staff_list',(req,res) => {
+    router.get('/create_company',(req,res) => {
+        // console.log(request.user);
+        res.render(`create_company.pug`);
+    });
+
+    router.post('/create_company/confirm',(req,res) => {
         // console.log(request.user);
 
-        res.render(`staff_list.pug`);
+        console.log(req.body.company_name);
+        
+    });
+
+    router.get('/staff_list',(req,res) => {
+        // console.log(request.user);
+        if(req.isAuthenticated()) {
+            
+
+
+            res.render(`staff_list.pug`);
+        } else { 
+            res.send(`please login`);
+        }
     });
 
     return router;
