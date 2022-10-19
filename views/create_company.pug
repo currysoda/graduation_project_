@@ -8,9 +8,7 @@ html
         form(action='/company/create_company/confirm', method='POST')
             p
                 | company_name :
-                input(type='text', id=`email`, name='email', value='')
+                input(type='text', id=`company_name`, name='company_name', value='')
                 br
-                | email :
-                input(type='text', id=`email`, name='email', value='')
                 br
                 input(type='submit', value='Submit')
