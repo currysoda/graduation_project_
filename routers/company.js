@@ -50,11 +50,11 @@ module.exports = (app) => {
         }
     });
 
-    router.get('/staff_list', (req, res) => {
+    router.get('/company_list', (req, res) => {
         // console.log(request.user);
         if (req.isAuthenticated()) {
 
-            res.render(`staff_list.pug`);
+            res.render(`company_list.pug`);
         } else {
             res.send(`please login`);
         }
