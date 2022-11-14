@@ -22,7 +22,9 @@ app.engine(`html`, require(`pug`).renderFile);
 
 // app.use(express.static(path.join(__dirname,`public`))); // 이렇게 적으면 안됨
 
-app.use('/public', express.static(path.join(__dirname, 'public'))); // 정적 파일 서비스
+// __dirname == 현재 파일 경로
+// 정적 파일 서비스
+app.use('/public', express.static(path.join(__dirname, 'public'))); 
 
 app.use(express.urlencoded({ extend : true}));
 app.use(express.json());
@@ -42,6 +44,7 @@ app.use(session({
     // https 일 경우에만 cookie secure : ture시에도 쿠키 전달
     // 프로그램은 http 환경에서 개발되므로 cookie secure : false를 사용
     // 상용 프로그램에서는 절대 중요정보를 cookie secure : false에서 전달 금지
+    // reverse proxy server 사용시 전달
     cookie: {   
                 secure: false,
                 maxAge: 1000 * 60 * 60
