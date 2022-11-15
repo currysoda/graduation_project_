@@ -25,17 +25,7 @@ module.exports = (app) => {
 
                 const [rows, fields] = await connection.execute(sql, values);
 
-                // console.log(`rows : `+ rows + `\n\n` + `fields : ` + fields + `\n\n`);
-
-                // console.log(`rows : `+ rows + `\n\n` + `rows_type : ` + typeof(rows) + `\n\n`);
-
-                // const parsing_result = JSON.stringify(rows);
-
-                // console.log(`rows_type : ` + typeof(parsing_result));
-                // console.log(`rows : ` + parsing_result);
-
                 if (Object.entries(rows).length === 0) {
-                    // console.log(`\n empty \n`);
 
                     let sql = `INSERT INTO account(email, pwd) VALUES(?, ?);`;
                     let values = [req.body.email, req.body.password];

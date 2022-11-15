@@ -20,10 +20,11 @@ app.set('view engine', `pug`); // 템플릿 엔진 페이지 생성하기 위해
 app.set(`views`, `./views`); //
 app.engine(`html`, require(`pug`).renderFile);
 
-// app.use(express.static(path.join(__dirname,`public`))); // 이렇게 적으면 안됨
+// app.use(express.static(path.join(__dirname,`public`)));
 
 // __dirname == 현재 파일 경로
 // 정적 파일 서비스
+// 경로가 OS에 따라 다르게 표현되도 지장 없도록
 app.use('/public', express.static(path.join(__dirname, 'public'))); 
 
 app.use(express.urlencoded({ extend : true}));
@@ -59,10 +60,10 @@ app.use(passport.session());
 
 // 라우터
 
-var registerRouter = require(`./routers/register`) (app);
+var registerRouter = require(`./routers/account_register`) (app);
 app.use(`/register`, registerRouter);
 
-var authRouter = require(`./routers/auth`) (app, passport);
+var authRouter = require(`./routers/loginpage`) (app, passport);
 app.use(`/auth`, authRouter);
 
 var companyRouter = require(`./routers/company`) (app);
@@ -72,15 +73,7 @@ var logout = require(`./routers/logout`) ();
 app.use(`/logout`, logout);
 
 app.get('/',(req,res) => {
-
-    // console.log(`req.isAuthenticated() : ${req.isAuthenticated()}`);
-
-    if(req.isAuthenticated())
-    {
-        console.log(`good`);
-    }
-    
-    res.render(`enterence.pug`);
+    res.status(200).render(`enterence.pug`);
 });
 
 // 에러

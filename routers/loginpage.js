@@ -3,7 +3,7 @@ var router = require(`express`).Router();
 
 module.exports = (app, passport) => {
 
-    router.get('/login', function (req, res, next) {
+    router.get('/', function (req, res, next) {
         if (req.isAuthenticated()) {
             console.log(`이미 로그인 됨`);
             res.redirect('/company')
