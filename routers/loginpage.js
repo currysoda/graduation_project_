@@ -15,7 +15,7 @@ module.exports = (app, passport) => {
     router.post('/login/password', passport.authenticate('local', {
         // 시작이 root router 에서 시작함
         successRedirect: '/company',
-        failureRedirect: '/login'
+        failureRedirect: '/loginpage'
         })
     );
 

@@ -64,7 +64,7 @@ var registerRouter = require(`./routers/account_register`) (app);
 app.use(`/account_register`, registerRouter);
 
 var authRouter = require(`./routers/loginpage`) (app, passport);
-app.use(`/login`, authRouter);
+app.use(`/loginpage`, authRouter);
 
 var companyRouter = require(`./routers/company`) (app);
 app.use(`/company`, companyRouter);

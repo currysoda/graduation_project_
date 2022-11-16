@@ -13,10 +13,11 @@ module.exports = (app) => {
 
     router.post(`/register_confirm`, (req, res) => {
 
-        // console.log(`req.body : ${req.body.email} \n`);
+        // console.log(`req.body.email : ${req.body.email} \n`);
+        // console.log(`req.body.password : ${req.body.password} \n`);
 
         try {
-            let sql = `SELECT email FROM account WHERE email = ?;`;
+            let sql = `SELECT email FROM user WHERE email = ?;`;
             let values = [req.body.email];
 
             async function register_account_db() {
@@ -27,7 +28,7 @@ module.exports = (app) => {
 
                 if (Object.entries(rows).length === 0) {
 
-                    let sql = `INSERT INTO account(email, pwd) VALUES(?, ?);`;
+                    let sql = `INSERT INTO user(userID, email, password) VALUES(NULL, ?, ?);`;
                     let values = [req.body.email, req.body.password];
 
                     await connection.execute(sql, values);
