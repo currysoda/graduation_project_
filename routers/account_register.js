@@ -11,7 +11,7 @@ module.exports = (app) => {
         res.render(`register.pug`);
     });
 
-    router.post(`/register_account`, (req, res) => {
+    router.post(`/register_confirm`, (req, res) => {
 
         // console.log(`req.body : ${req.body.email} \n`);
 

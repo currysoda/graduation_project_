@@ -61,10 +61,10 @@ app.use(passport.session());
 // 라우터
 
 var registerRouter = require(`./routers/account_register`) (app);
-app.use(`/register`, registerRouter);
+app.use(`/account_register`, registerRouter);
 
 var authRouter = require(`./routers/loginpage`) (app, passport);
-app.use(`/auth`, authRouter);
+app.use(`/login`, authRouter);
 
 var companyRouter = require(`./routers/company`) (app);
 app.use(`/company`, companyRouter);
