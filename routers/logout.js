@@ -6,6 +6,8 @@ module.exports = () => {
     router.get(`/`,(req, res) => {
         // console.log(`logout`);
 
+        console.log(req.sessionID);
+
         req.session.destroy();
         req.session = null;
 

@@ -33,7 +33,8 @@ app.use(express.json());
 app.use(cookie_parser());
 app.use(compression()); // 압축 전송
 
-const fileStoreOptions = {};
+const fileStoreOptions = {
+};
 
 app.use(session({
     store : new FileStore(fileStoreOptions),
