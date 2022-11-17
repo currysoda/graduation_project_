@@ -1,6 +1,6 @@
 html
     head
-        title= `company`
+        title= `mainpage`
     body
         h1 company mainpage
         br
@@ -8,12 +8,16 @@ html
         include logout.pug
         br
         br
-        a(class='button' href='/company/create_company') create_company
+        a(class='button' href='/mainpage/create_company') create_company
         br
         br
-        a(class='button' href='/company/company_list') My_company_list
+        a(class='button' href='/mainpage/company_list') My_company_list
         br
         br
+        a(class=`button` href=`/mainpage/my_work_add`) my_work_add
+        h3 내 할일
+
+
         //- a(class='button' href='/company/') staff_list
         //- br
         //- a(class='button' href='/company/') staff_list

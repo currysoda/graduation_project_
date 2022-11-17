@@ -5,6 +5,7 @@
 
 data/
 sessions/
+public/work_folder/
 
 # .gitignore 생성기로 만든 목록
 

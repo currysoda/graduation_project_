@@ -1,0 +1,33 @@
+var express = require(`express`);
+var router = require(`express`).Router();
+var db = require(`../lib/db`);
+
+module.exports = (app) => {
+
+    router.get('/', (req, res) => {
+        // console.log(request.user);
+        if (req.isAuthenticated()) {
+
+            // console.log(req.user.id);
+            // console.log(req.session);
+            // console.log(req.sessionID);
+
+            res.render(`mainpage.pug`);
+
+        } else {
+            res.send(`please login`);
+        }
+    });
+
+    // 소속된 company 확인
+    var company_list = require(`./company_list`) ();
+    router.use(`/company_list`, company_list);
+
+    var create_company_router = require(`./create_company`) ();
+    router.use(`/create_company`, create_company_router);
+
+    var my_work_add_router = require(`./my_work_add`) ();
+    router.use(`/my_work_add`, my_work_add_router);
+
+    return router;
+}
