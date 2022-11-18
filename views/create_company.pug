@@ -5,10 +5,10 @@ html
         //- link(rel="stylesheet", href="../public/css/style.css")
     body
         h1 create_company 
-        form(action='/company/create_company/confirm', method='POST')
+        form(action='/mainpage/create_company/confirm', method='POST')
             p
                 | company_name :
-                input(type='text', id=`company_name`, name='company_name', value='')
+                input(type='text', name='company_name', value='')
                 br
                 br
                 input(type='submit', value='Submit')
