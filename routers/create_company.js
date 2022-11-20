@@ -2,6 +2,8 @@ var express = require(`express`);
 var router = require(`express`).Router();
 var db = require(`../lib/db`);
 var inspect = require('object-inspect');
+var fs = require('fs');
+var path = require(`path`);
 
 module.exports = () => {
 
@@ -15,6 +17,7 @@ module.exports = () => {
         // console.log(`req.body.company_name : ${req.body.company_name}`);
         // console.log(req.session.passport.user.id);
 
+        let mkdir_company;
         let company_id;
         let team_id;
         let permission_id;
@@ -84,6 +87,10 @@ module.exports = () => {
 
             company_id = await sql_find_companyID_results[0].companyID;
 
+            // mkdir for company
+
+            mkdir_company = await path.join(__dirname, '..', 'public', 'work_folder', (company_id).toString());
+
             // create default team
             // find team_id
 
@@ -140,6 +147,13 @@ module.exports = () => {
                 }
                 else {
                     await registed_company();
+
+                    // mkdir for company
+                    // console.log(mkdir_company);
+                    if(!fs.existsSync(mkdir_company)) {
+                        fs.mkdirSync(mkdir_company);
+                    }
+
                     res.status(201).render(`create_company_confirm`);
                 }
             }
