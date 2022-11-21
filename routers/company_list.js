@@ -46,21 +46,22 @@ module.exports = () => {
                 my_company_list_id.push(item.companyID);
             });
 
-            console.log(my_company_list_id);
+            // console.log(my_company_list_id);
 
             // find company_list * 
 
             // console.log(`find_company_list`);
 
             let sql_find_company = `SELECT * FROM company_list WHERE companyID = ?;`;
+            let sql_find_user_name
             await my_company_list_id.forEach(async (item, index, array) => {
                 let values_find_company = [item];
 
-                console.log(`item : ${item}`);
+                // console.log(`item : ${item}`);
 
                 const [sql_find_company_results, sql_find_company_fields] = await connection.execute(sql_find_company, values_find_company);
 
-                console.log(sql_find_company_results);
+                // console.log(sql_find_company_results);
 
             });
 
@@ -76,8 +77,8 @@ module.exports = () => {
         async function response_f() {
 
             await execution_order();
-            await console.log(`typeof : ${typeof (my_company_list_id)}`);
-            await console.log(`my_company_list_id : ${my_company_list_id}`);
+            // await console.log(`typeof : ${typeof (my_company_list_id)}`);
+            // await console.log(`my_company_list_id : ${my_company_list_id}`);
 
             await res.render(`my_company_list`, { temp: my_company_list_id });
         }
