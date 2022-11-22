@@ -4,4 +4,8 @@ html
         //- script(src="../public/js/temp.js")
     body
         h2 my_company_list
-        h2 #{temp}
+        br
+        each company, index in temp
+            ul 
+                li= (index + 1) + ' companyID : ' + company.companyID + ' company_name : ' + company.company_name + ' company_chief_userID : ' + company.company_chief_userID + ' nick_name : ' + company.nick_name 
+                a(class='button' href=`/mainpage/company_list/${company.companyID}`) company_info
