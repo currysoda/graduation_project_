@@ -11,6 +11,7 @@ module.exports = () => {
         let user_email = req.session.passport.user.id;
         let user_id;
         let my_company_list_id = [];
+        let chief_user_id = [];
         let my_company_list_name = [];
         let res_object = [];
 
@@ -40,10 +41,10 @@ module.exports = () => {
             // console.log(typeof(rows));
             // console.log(`results : ${inspect(rows)}`);
 
-            await rows.forEach((item, index, array) => {
+            await rows.forEach(async (item, index, array) => {
                 // console.log(typeof(item.companyID));
                 // console.log(item.companyID);
-                my_company_list_id.push(item.companyID);
+                await my_company_list_id.push(item.companyID);
             });
 
             // console.log(my_company_list_id);
@@ -53,7 +54,6 @@ module.exports = () => {
             // console.log(`find_company_list`);
 
             let sql_find_company = `SELECT * FROM company_list WHERE companyID = ?;`;
-            let sql_find_user_name
             await my_company_list_id.forEach(async (item, index, array) => {
                 let values_find_company = [item];
 
@@ -61,7 +61,33 @@ module.exports = () => {
 
                 const [sql_find_company_results, sql_find_company_fields] = await connection.execute(sql_find_company, values_find_company);
 
-                // console.log(sql_find_company_results);
+                // console.log(`item : ${item} index : ${index} results : ${inspect(sql_find_company_results[0])}`);
+
+                await console.log(`sql_find_company_results[0].company_chief_userID : ${sql_find_company_results[0].company_chief_userID}`);
+
+                await chief_user_id.push(sql_find_company_results[0].company_chief_userID);
+                await res_object.push(sql_find_company_results[0]);
+            });
+
+            await connection.end();
+        }
+
+        async function find_user_nick_name() {
+            const connection = await db();
+            // find user nick_name
+
+            await console.log(chief_user_id);
+            let sql_find_user_name = `SELECT nick_name FROM user_rel_company_list WHERE userID = ?;`
+            await chief_user_id.forEach(async (item, index, array) => {
+                let values_find_user_name = [item];
+
+                console.log(`item : ${item}`);
+
+                const [sql_find_user_name_results, sql_find_user_name_fields] = await connection.execute(sql_find_user_name, values_find_user_name);
+
+                console.log(`find_user_name : ${inspect(sql_find_user_name_results[0].nick_name)}`);
+
+                res_object[index].nick_name = await sql_find_user_name_results[0].nick_name;
 
             });
 
@@ -72,6 +98,7 @@ module.exports = () => {
         async function execution_order() {
             await find_user_id();
             await my_company_list();
+            await find_user_nick_name();
         }
 
         async function response_f() {
@@ -80,7 +107,9 @@ module.exports = () => {
             // await console.log(`typeof : ${typeof (my_company_list_id)}`);
             // await console.log(`my_company_list_id : ${my_company_list_id}`);
 
-            await res.render(`my_company_list`, { temp: my_company_list_id });
+            // await console.log(`res_object : ${inspect(res_object)}`);
+
+            await res.render(`my_company_list`, { temp: inspect(res_object) });
         }
 
         response_f();

@@ -110,7 +110,7 @@ module.exports = () => {
             // create permission
             // find permission_id
 
-            let sql_create_permission = `INSERT INTO permission_list(permissionID, companyID, userID, premission_name, search_user, create_user, delete_user)
+            let sql_create_permission = `INSERT INTO permission_list(permissionID, companyID, userID, permission_name, search_user, create_user, delete_user)
             VALUES(NULL, ?, ?, "chief", 1, 1, 1);`;
             let values_create_permission = [company_id, chief_user_id];
 

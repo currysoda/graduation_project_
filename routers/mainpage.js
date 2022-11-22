@@ -19,6 +19,11 @@ module.exports = (app) => {
         }
     });
 
+    // 내 정보
+
+    var my_info = require(`./my_information`) ();
+    router.use(`/my_information`, my_info);
+
     // 소속된 company 확인
     var company_list = require(`./company_list`) ();
     router.use(`/company_list`, company_list);
