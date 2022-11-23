@@ -1,0 +1,17 @@
+//- register.js
+html
+    head
+        title= `company_add_user` 
+    body
+        h1 company_add_user
+        //- h1 #{company_id}
+        br
+        br
+        form(action='/mainpage/company_list/company_add_user/confirm', method='POST')
+            p
+                | email:
+                input(type='text', id=`email`, name='email', value='')
+                br
+                br
+                input(type=`hidden`, id=`company_id`, name=`company_id` ,value = company_id)
+                input(type='submit', value='Submit')

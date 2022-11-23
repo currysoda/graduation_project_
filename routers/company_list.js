@@ -133,5 +133,11 @@ module.exports = () => {
     var company_information = require(`./company_information`) ();
     router.use(`/`, company_information);
 
+    var company_add_user = require(`./company_add_user`) ();
+    router.use(`/company_add_user`, company_add_user);
+
+    var company_add_user = require(`./company_delete_user`) ();
+    router.use(`/company_delete_user`, company_add_user);
+
     return router;
 }

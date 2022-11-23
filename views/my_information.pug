@@ -4,4 +4,8 @@ html
         
     body
         h2 my_info 
-        
+        h2 my_user_id : #{my_user_id}
+        h2 my_email : #{my_email} 
+        each my_info, index in my_information
+            ul 
+                li= (index + 1) + ' companyID : ' + my_info.companyID + ' company_name : ' + my_info.company_name + ' position_name : ' + my_info.office_position_name + ' nick_name : ' + my_info.nick_name + ' email : ' + my_info.email + ' phone_number : ' + my_info.phone_number + ' annual_salary : ' + my_info.annual_salary
