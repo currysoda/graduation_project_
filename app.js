@@ -34,6 +34,7 @@ app.use(cookie_parser());
 app.use(compression()); // 압축 전송
 
 const fileStoreOptions = {
+    
 };
 
 app.use(session({

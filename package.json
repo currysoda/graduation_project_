@@ -2,7 +2,7 @@
   "name": "pmprogram",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -36,6 +36,7 @@
     "pug": "^3.0.2",
     "qs": "^6.11.0",
     "querystring": "^0.2.1",
+    "react": "^18.2.0",
     "sanitize-html": "^2.7.2",
     "session-file-store": "^1.5.0",
     "supervisor": "^0.12.0",
