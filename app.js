@@ -14,6 +14,7 @@ app.use(helmet()); // 기본 보안
 var session = require(`express-session`);
 var FileStore = require(`session-file-store`)(session);
 var cors = require(`cors`);
+app.use(cors());
 
 app.locals.pretty = true; // html 편하게 보기
 
@@ -31,7 +32,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extend : true}));
 app.use(express.json());
 
-app.use(cors());
 
 app.use(cookie_parser());
 app.use(compression()); // 압축 전송
@@ -77,16 +77,16 @@ app.use(`/mainpage`, companyRouter);
 var logout = require(`./routers/logout`) ();
 app.use(`/logout`, logout);
 
-app.get('/',(req,res) => {
+app.get('/',(req, res, next) => {
     res.status(200).render(`enterence.pug`);
 });
 
 // 에러
 app.use((req, res, next) => {
-    res.status(404).send("Sorry can't find that!")
+    res.status(404).send("Sorry can't find that!");
 });
 
 // 실행
-app.listen(3000,() => {
-    console.log("connected 3000 port!");
+app.listen(8080,() => {
+    console.log("connected 8080 port!");
 });
