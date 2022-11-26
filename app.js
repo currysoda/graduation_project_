@@ -13,6 +13,7 @@ app.use(helmet()); // 기본 보안
 
 var session = require(`express-session`);
 var FileStore = require(`session-file-store`)(session);
+var cors = require(`cors`);
 
 app.locals.pretty = true; // html 편하게 보기
 
@@ -29,6 +30,8 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extend : true}));
 app.use(express.json());
+
+app.use(cors());
 
 app.use(cookie_parser());
 app.use(compression()); // 압축 전송
