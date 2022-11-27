@@ -45,7 +45,7 @@ module.exports = () => {
         // find_user_id();
 
         async function duplicate_check() {
-            let sql = `SELECT * FROM company_list WHERE company_name=? AND company_chief_userID=?`;
+            let sql = `SELECT * FROM company_list WHERE company_name = ? AND company_chief_userID = ?`;
             let values = [company_name, chief_user_id];
 
             const connection = await db();

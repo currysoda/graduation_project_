@@ -1,0 +1,17 @@
+//- register.js
+html
+    head
+        title= `company_delete_user` 
+    body
+        h1 company_delete_user
+        //- h1 #{company_id}
+        br
+        br
+        form(action='/mainpage/company_list/company_delete_user/confirm', method='POST')
+            p
+                | userID:
+                input(type='text', id=`userID`, name='userID', value='')
+                br
+                br
+                input(type=`hidden`, id=`company_id`, name=`company_id` , value = company_id)
+                input(type='submit', value='Submit')

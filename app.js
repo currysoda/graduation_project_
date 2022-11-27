@@ -14,6 +14,10 @@ app.use(helmet()); // 기본 보안
 var session = require(`express-session`);
 var FileStore = require(`session-file-store`)(session);
 var cors = require(`cors`);
+const corsOptions = {
+    origin : true,
+    credentials : true
+};
 app.use(cors());
 
 app.locals.pretty = true; // html 편하게 보기
@@ -31,7 +35,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extend : true}));
 app.use(express.json());
-
 
 app.use(cookie_parser());
 app.use(compression()); // 압축 전송
@@ -77,8 +80,12 @@ app.use(`/mainpage`, companyRouter);
 var logout = require(`./routers/logout`) ();
 app.use(`/logout`, logout);
 
+// app.get('/',(req, res, next) => {
+//     res.status(200).render(`enterence.pug`);
+// });
+
 app.get('/',(req, res, next) => {
-    res.status(200).render(`enterence.pug`);
+    res.render(`enterence`);
 });
 
 // 에러
