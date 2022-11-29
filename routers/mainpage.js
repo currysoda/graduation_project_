@@ -31,8 +31,8 @@ module.exports = (app) => {
     var create_company_router = require(`./create_company`) ();
     router.use(`/create_company`, create_company_router);
 
-    var my_work_add_router = require(`./my_work_add`) ();
-    router.use(`/my_work_add`, my_work_add_router);
+    var work_list_router = require(`./work_list`) ();
+    router.use(`/work_list`, work_list_router);
 
     return router;
 }
