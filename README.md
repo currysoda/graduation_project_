@@ -37,10 +37,10 @@
 │      create_company.js
 │      loginpage.js
 │      logout.js
-│      main.js
 │      mainpage.js
 │      my_information.js
-│      my_work_add.js
+│      work_files.js
+│      work_list.js
 │
 ├─template
 │      db.template.js
@@ -49,6 +49,9 @@
 └─views
         already_exist_company.pug
         company_add_user.pug
+        company_add_user_confirm.pug
+        company_delete_user.pug
+        company_delete_user_confirm.pug
         company_information.pug
         company_list.pug
         create_company.pug
@@ -64,4 +67,8 @@
         register.pug
         register_failure.pug
         register_success.pug
+        work_add.pug
+        work_files_add.pug
+        work_files_list.pug
+        work_list.pug
 ```
