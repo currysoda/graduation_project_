@@ -1,0 +1,17 @@
+html
+    head
+        title work_add_page
+    body
+        h1 work_add_page 
+        form(action='/mainpage/work_list/work_add_confirm', method='POST')
+            p
+                | work_name:
+                input(type='text', id=`work_name`, name='work_name', value='')
+                br
+                br
+                | work_description:
+                input(type='text', id=`work_description`, name='work_description', value='')
+                br
+                br
+                input(type=`hidden`, id=`company_id`, name=`company_id` , value = company_id)
+                input(type='submit', value='Submit')

@@ -1,0 +1,19 @@
+html
+    head
+        meta(charset='utf-8')
+        title= `work_files_add`
+        
+    body
+        h2 work_files_add
+        br
+        form(action = '/mainpage/work_list/work_files/work_files_add/confirm', enctype = 'multipart/form-data', accept-charset='UTF-8', method = 'POST')
+            p
+                br
+                br
+                | file_upload :
+                input(type='file', id=`upload_file`, name='upload_file', value='')
+                br
+                br
+                input(type=`hidden`, id=`work_id`, name=`work_id` , value = work_id)
+                input(type=`hidden`, id=`company_id`, name=`company_id` , value = company_id)
+                input(type='submit', value='Submit')

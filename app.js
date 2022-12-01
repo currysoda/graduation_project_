@@ -7,10 +7,9 @@ var compression = require('compression');
 var cookie_parser = require(`cookie-parser`);
 var path = require(`path`);
 var LocalStrategy = require(`passport-local`);
-
 var helmet = require(`helmet`);
 app.use(helmet()); // 기본 보안
-
+// var multer = require('multer');
 var session = require(`express-session`);
 var FileStore = require(`session-file-store`)(session);
 var cors = require(`cors`);
@@ -32,6 +31,7 @@ app.engine(`html`, require(`pug`).renderFile);
 // 정적 파일 서비스
 // 경로가 OS에 따라 다르게 표현되도 지장 없도록
 app.use('/public', express.static(path.join(__dirname, 'public'))); 
+// app.use(multer({ dest : "./public/work_folder/" }));
 
 app.use(express.urlencoded({ extend : true}));
 app.use(express.json());

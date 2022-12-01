@@ -1,0 +1,14 @@
+html
+    head
+        meta(charset='utf-8')
+        title= `work_files_list`
+        
+    body
+        a(class='button' href=`/mainpage/work_list/work_files/${work_id}/work_files_add`) work_files_add
+        h2 work_files_list
+        br
+        each work_file, index in work_files_list
+            ul 
+                li= (index + 1) + ' | ' + ' work_file_name : ' + work_file.original_file_name
+                a(class='button' href=`/mainpage/work_list/work_files/${work_file.dummyID}/download`) download
+        
