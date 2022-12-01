@@ -85,7 +85,7 @@ app.use(`/logout`, logout);
 // });
 
 app.get('/',(req, res, next) => {
-    res.render(`enterence`);
+    res.render(`entrance`);
 });
 
 // 에러
