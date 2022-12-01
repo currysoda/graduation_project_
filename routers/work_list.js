@@ -133,9 +133,13 @@ module.exports = (app) => {
             let sql_delete_work = "DELETE FROM work_list WHERE `workID` = ?;";
             let values_delete_work = [work_id];
 
+            let sql_delete_work_file = "DELETE FROM work_file_list WHERE `workID` = ?;";
+            let values_delete_work_file = [work_id];
+
             const connection = await db();
 
             await connection.execute(sql_delete_work, values_delete_work);
+            await connection.execute(sql_delete_work_file, values_delete_work_file);
 
             await connection.end();
             await res.redirect(`/mainpage/work_list`);

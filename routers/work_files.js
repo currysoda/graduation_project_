@@ -2,10 +2,10 @@ var express = require(`express`);
 var router = require(`express`).Router();
 var db = require(`../lib/db`);
 var inspect = require('object-inspect');
-const multer = require('multer')
-const upload = multer({ dest: '../public/work_folder' })
-var fs = require('fs');
 var path = require('path');
+const multer = require('multer')
+const upload = multer({ dest: `${path.join(__dirname , '..', 'public', 'work_folder')}` })
+var fs = require('fs');
 var iconv = require('iconv-lite');
 const { contentSecurityPolicy } = require('helmet');
 
@@ -109,7 +109,7 @@ module.exports = (app) => {
         async function response_f() {
             await router_sequence();
 
-            await res.send(`HOST/mainpage/work_list/work_files/work_files_add/confirm`);
+            await res.redirect(`/mainpage/work_list/work_files/${work_id}`);
         }
 
         response_f();
@@ -132,15 +132,20 @@ module.exports = (app) => {
             server_filename = await sql_find_file_name_results[0].convert_file_name;
             original_name = await sql_find_file_name_results[0].original_file_name;
 
+            original_name = await original_name.toString();
+
             // await console.log(inspect(sql_find_file_name_results));
             // await console.log(inspect(sql_find_file_name_results[0].convert_file_name));
 
-            download_path = await path.join('..', 'public', 'work_folder', server_filename);
+            download_path = await path.join(__dirname , '..', 'public', 'work_folder', server_filename);
+            // console.log(__dirname);
 
+            // await console.log(typeof(download_path));
             // await console.log(download_path);
 
             // await console.log(typeof(original_name));
-            
+            // await console.log(original_name);
+
             await res.download(download_path, original_name, (err) => {
                 if(err) {
                     console.log(err);
@@ -149,6 +154,49 @@ module.exports = (app) => {
         }
         find_file_name();
         // console.log(dummy_id);
+    });
+
+    router.get(`/:dummy_id/work_file_delete`, (req, res) => {
+        let dummy_id = req.params.dummy_id;
+        let work_id = req.query.work_id;
+        let delete_file_name;
+        let delete_file_path;
+
+        // console.log(dummy_id);
+        // console.log(work_id);
+
+        async function delete_work_file() {
+            let sql_find_convert_file_name = "SELECT convert_file_name FROM work_file_list WHERE `dummyID` = ?;";
+            let values_find_convert_file_name = [dummy_id];
+
+            let sql_delete_work_file = "DELETE FROM work_file_list WHERE `dummyID` = ?;";
+            let values_delete_work_file = [dummy_id];
+
+            const connection = await db();
+            const [sql_find_convert_file_name_results] = await connection.execute(sql_find_convert_file_name, values_find_convert_file_name);
+            await connection.execute(sql_delete_work_file, values_delete_work_file);
+
+            // await console.log(inspect(sql_find_convert_file_name_results[0].convert_file_name));
+            // await console.log(typeof(sql_find_convert_file_name_results[0].convert_file_name));
+
+            delete_file_name = sql_find_convert_file_name_results[0].convert_file_name;
+
+            // await console.log(delete_file_name);
+
+            delete_file_path = await path.join(__dirname , '..', 'public', 'work_folder', delete_file_name);
+
+            await console.log(delete_file_path);
+
+            fs.unlink(delete_file_path, (err) => {
+                if(err) {
+                    console.log(err);
+                }
+            });
+
+            await connection.end();
+            await res.redirect(`/mainpage/work_list/work_files/${work_id}`);
+        }
+        delete_work_file();
     });
 
     return router;
