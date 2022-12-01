@@ -185,7 +185,7 @@ module.exports = (app) => {
 
             delete_file_path = await path.join(__dirname , '..', 'public', 'work_folder', delete_file_name);
 
-            await console.log(delete_file_path);
+            // await console.log(delete_file_path);
 
             fs.unlink(delete_file_path, (err) => {
                 if(err) {

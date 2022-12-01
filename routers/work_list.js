@@ -2,6 +2,8 @@ var express = require(`express`);
 var router = require(`express`).Router();
 var db = require(`../lib/db`);
 var inspect = require('object-inspect');
+var fs = require('fs');
+var path = require('path');
 
 module.exports = (app) => {
 
@@ -87,7 +89,7 @@ module.exports = (app) => {
 
             // await console.log(`res_object : ${inspect(res_object)}`);
 
-            await res.render(`work_list`, { res_object : res_object });
+            await res.render(`work_list`, { res_object: res_object });
 
         }
         router_sequence();
@@ -97,7 +99,7 @@ module.exports = (app) => {
         let company_id = req.params.company_id;
         // console.log(company_id);
 
-        res.render(`work_add.pug`, { company_id : company_id });
+        res.render(`work_add.pug`, { company_id: company_id });
     });
 
     router.post(`/work_add_confirm`, (req, res) => {
@@ -126,10 +128,15 @@ module.exports = (app) => {
 
     router.get(`/work_delete/:work_id`, (req, res) => {
         let work_id = req.params.work_id;
+        let delete_file_name;
+        let delete_file_path;
 
         // console.log(work_id);
-        
+
         async function router_sequence() {
+            let sql_find_convert_file_name = "SELECT convert_file_name FROM work_file_list WHERE `workID` = ?;";
+            let values_find_convert_file_name = [work_id];
+
             let sql_delete_work = "DELETE FROM work_list WHERE `workID` = ?;";
             let values_delete_work = [work_id];
 
@@ -137,10 +144,25 @@ module.exports = (app) => {
             let values_delete_work_file = [work_id];
 
             const connection = await db();
-
+            const [sql_find_convert_file_name_results] = await connection.execute(sql_find_convert_file_name, values_find_convert_file_name);
             await connection.execute(sql_delete_work, values_delete_work);
             await connection.execute(sql_delete_work_file, values_delete_work_file);
 
+            async function for_loop() {
+                for (const item of sql_find_convert_file_name_results) {
+                    // console.log(item.convert_file_name);
+                    delete_file_name = await item.convert_file_name;
+                    delete_file_path = await path.join(__dirname, '..', 'public', 'work_folder', delete_file_name);
+
+                    fs.unlink(delete_file_path, (err) => {
+                        if (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+            }
+            
+            await for_loop();
             await connection.end();
             await res.redirect(`/mainpage/work_list`);
         }
@@ -148,7 +170,7 @@ module.exports = (app) => {
         router_sequence();
     });
 
-    var work_files_router = require(`./work_files`) (app);
+    var work_files_router = require(`./work_files`)(app);
     router.use(`/work_files`, work_files_router);
 
     return router;
