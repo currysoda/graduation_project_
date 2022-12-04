@@ -2,14 +2,15 @@
 html
     head
         title= `loginPage` 
+        link(rel="stylesheet", href="../public/css/loginpage.css")
     body
-        h1 Sign in
-          form(action='/loginpage/login_confirm', method='POST')
-            p
-                | email:
+        div(class= 'page_contents')
+            h1 Sign in
+            form(class='form_class' action='/loginpage/login_confirm', method='POST')
+                p email:
                 input(type='text', id=`email`, name='email', value='')
                 br
-                | password: 
+                p password: 
                 input(type='password',id=`password`, name='password', value='')
                 br
-                input(type='submit', value='Submit')
+                button(type="submit") Submit
