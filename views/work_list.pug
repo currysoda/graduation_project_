@@ -1,18 +1,25 @@
 html
     head
         title= `work_list`
-        
+        link(rel="stylesheet", href="../public/css/work_list.css")
     body
-        h2 work_list
-        br
-        each company, index in res_object
-            ul 
-                li= (index + 1) + ' | ' + 'companyID : ' + company.companyID + ' company_name : ' + company.company_name + ' company_chief_userID : ' + company.company_chief_userID 
-                a(class='button' href=`/mainpage/work_list/${company.companyID}`) work_add 
-                each work, index in company.work_list 
-                    ul 
-                        li= (index + 1) +  ' | ' + ' workID : ' + work.workID + ' work_name : ' + work.work_name + ' work_description : ' + work.work_description 
-                        a(class='button' href=`/mainpage/work_list/work_files/${work.workID}`) work_files
-                        br
-                        br
-                        a(class='button' href=`/mainpage/work_list/work_delete/${work.workID}`) work_delete
+        div(class= 'page_contents')
+            h1 work_list
+            br
+            each company, index in res_object
+                ul 
+                    li= (index + 1) + ' | ' + 'companyID : ' + company.companyID + ' company_name : ' + company.company_name + ' company_chief_userID : ' + company.company_chief_userID 
+                    //- a(class='button' href=`/mainpage/work_list/${company.companyID}`) work_add 
+                    a(href=`/mainpage/work_list/${company.companyID}`)
+                        button(type='button' onclick = "location.href=`/mainpage/work_list/#{company.companyID}` " width="100px") work_add
+                    each work, index in company.work_list 
+                        ul 
+                            li= (index + 1) +  ' | ' + ' workID : ' + work.workID + ' work_name : ' + work.work_name + ' work_description : ' + work.work_description 
+                            //- a(class='button' href=`/mainpage/work_list/work_files/${work.workID}`) work_files_list
+                            a(href=`/mainpage/work_list/work_files/${work.workID}`)
+                                button(type='button' onclick = "location.href=`/mainpage/work_list/work_files/#{work.workID}` " width="100px") work_files_list
+                            br
+                            br
+                            //- a(class='button' href=`/mainpage/work_list/work_delete/${work.workID}`) work_delete
+                            a(href=`/mainpage/work_list/work_delete/${work.workID}`)
+                                button(type='button' onclick = "location.href=`/mainpage/work_list/work_delete/#{work.workID}` " width="100px") work_delete

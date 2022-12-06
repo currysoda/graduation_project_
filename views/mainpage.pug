@@ -3,22 +3,23 @@ html
         title= `mainpage`
         link(rel="stylesheet", href="../public/css/mainpage.css")
     body
-        h1 company mainpage
-        br
-        br
-        a(class=`button` href=`/mainpage/my_information`) my_information
-        br
-        br
-        include logout.pug
-        br
-        br
-        a(class='button' href='/mainpage/create_company') create_company
-        br
-        br
-        a(class='button' href='/mainpage/company_list') My_company_list
-        br
-        br
-        a(class=`button` href=`/mainpage/work_list`) work_list
+        div(class= 'page_contents')
+            h1 company mainpage
+            br
+            br
+            a(class=`button` href=`/mainpage/my_information`) my_information
+            br
+            br
+            include logout.pug
+            br
+            br
+            a(class='button' href='/mainpage/create_company') create_company
+            br
+            br
+            a(class='button' href='/mainpage/company_list') My_company_list
+            br
+            br
+            a(class=`button` href=`/mainpage/work_list`) work_list
 
 
         //- a(class='button' href='/company/') staff_list

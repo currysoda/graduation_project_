@@ -2,16 +2,17 @@
 html
     head
         title= `company_delete_user` 
+        link(rel="stylesheet", href="../../../public/css/company_add_user.css")
     body
-        h1 company_delete_user
-        //- h1 #{company_id}
-        br
-        br
-        form(action='/mainpage/company_list/company_delete_user/confirm', method='POST')
-            p
-                | userID:
+        div(class= 'page_contents')
+            h1 company_delete_user
+            //- h1 #{company_id}
+            br
+            br
+            form(action='/mainpage/company_list/company_delete_user/confirm', method='POST')
+                p userID:
                 input(type='text', id=`userID`, name='userID', value='')
                 br
                 br
                 input(type=`hidden`, id=`company_id`, name=`company_id` , value = company_id)
-                input(type='submit', value='Submit')
+                button(type="submit") Submit

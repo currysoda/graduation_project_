@@ -1,11 +1,13 @@
 html
     head
         title= `my_company_list`
-        //- script(src="../public/js/temp.js")
+        link(rel="stylesheet", href="../public/css/my_company_list.css")
     body
-        h2 my_company_list
-        br
-        each company, index in temp
-            ul 
-                li= (index + 1) + ' companyID : ' + company.companyID + ' company_name : ' + company.company_name + ' company_chief_userID : ' + company.company_chief_userID + ' nick_name : ' + company.nick_name 
-                a(class='button' href=`/mainpage/company_list/${company.companyID}`) company_info
+        div(class= 'page_contents')
+            h2 my_company_list
+            br
+            each company, index in temp
+                ul 
+                    li= (index + 1) + ' companyID : ' + company.companyID + ' company_name : ' + company.company_name + ' company_chief_userID : ' + company.company_chief_userID + ' nick_name : ' + company.nick_name 
+                    a(href=`/mainpage/company_list/${company.companyID}`)
+                        button(type='button' onclick = "location.href = `/mainpage/company_list/#{company.companyID}` " width="100px") company_info
