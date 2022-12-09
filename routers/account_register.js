@@ -40,7 +40,7 @@ module.exports = (app) => {
                 } else {
                     await connection.end();
 
-                    res.render(`register_failure`);
+                    res.render(`register_failure`, { message : " 이미 등록된 email 입니다. "});
                 }
             }
 

@@ -10,10 +10,10 @@ a {
 
 }
 a:link {
-	color: black;
+	color: skyblue;
 }
 a:visited {
-	color: black;
+	color: skyblue;
 }
 
 .page_contents {
@@ -64,3 +64,30 @@ button:hover {
     background-color:aliceblue
 }
 
+table {
+	width: 50%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-radius: 8px;
+  }
+
+  .table_attribute th{
+	background-color: wheat;
+	text-align: center;
+  }
+  
+  th,
+  td {
+	text-align: left;
+	border: 1px solid black;
+  }
+  
+  th {
+	padding: 8px 10px;
+	height: 48px;
+  }
+  
+  td {
+	padding: 6px 8px;
+	height: 40px;
+  }

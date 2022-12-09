@@ -2,7 +2,7 @@
 html
     head
         title= `company_delete_user` 
-        link(rel="stylesheet", href="../../../public/css/company_add_user.css")
+        link(rel="stylesheet", href="/public/css/company_add_user.css")
     body
         div(class= 'page_contents')
             h1 company_delete_user
@@ -10,7 +10,7 @@ html
             br
             br
             form(action='/mainpage/company_list/company_delete_user/confirm', method='POST')
-                p userID:
+                p userID
                 input(type='text', id=`userID`, name='userID', value='')
                 br
                 br

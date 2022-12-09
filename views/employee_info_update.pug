@@ -1,0 +1,15 @@
+html
+    head
+        title employ info update
+        link(rel="stylesheet", href="/public/css/employee_info_update.css")
+    body
+        div(class='page_contents')
+            h1 info update
+            
+            form(action='/mainpage/company_list/employee_details/update', method='POST')
+                p company_name 
+                input(type='text', name='company_name', value='')
+                br
+                br
+                button(type="submit") Submit
+        

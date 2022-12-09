@@ -1,21 +1,47 @@
 html
     head
         title= `company_information`
-        link(rel="stylesheet", href="../../public/css/company_information.css")
+        link(rel="stylesheet", href="/public/css/company_information.css")
     body
         div(class= 'page_contents')
-            h1 company_member_list
+            h1 company member list
             br
             br
             //- a(class='button' href=`/mainpage/company_list/company_add_user/${company_id}`) add_user
             a(href=`/mainpage/company_list/company_add_user/${company_id}`)
-                button(type='button' onclick = "location.href=`/mainpage/company_list/company_add_user/#{company_id}` " width="100px") add_user
+                button(type='button' onclick = "location.href=`/mainpage/company_list/company_add_user/#{company_id}` " width="100px") add user
             br
             //- a(class='button' href=`/mainpage/company_list/company_delete_user/${company_id}`) delete_user
             a(href=`/mainpage/company_list/company_delete_user/${company_id}`)
-                button(type='button' onclick = "location.href=`/mainpage/company_list/company_delete_user/#{company_id}` " width="100px") delete_user
+                button(type='button' onclick = "location.href=`/mainpage/company_list/company_delete_user/#{company_id}` " width="100px") delete user
             br
             br
-            each company_info, index in company_information
-                ul 
-                    li= (index + 1) + ' | ' + ' userID : ' + company_info.userID + ' nick_name : ' + company_info.nick_name + ' position_name : ' + company_info.office_position_name + ' email : ' + company_info.email + ' phone_number : ' + company_info.phone_number + ' effective_date : ' + company_info.effective_date
+            //- each company_info, index in company_information
+            //-     ul 
+            //-         li= (index + 1) + ' | ' + ' userID : ' + company_info.userID + ' nick_name : ' + company_info.nick_name + ' position_name : ' + company_info.office_position_name + ' email : ' + company_info.email + ' phone_number : ' + company_info.phone_number + ' effective_date : ' + company_info.effective_date
+            
+            table 
+                tr(class= "table_attribute")  
+                    th Number
+                    th userID
+                    th nick name
+                    th position name
+                    th annual salary
+                    th email
+                    th phone number
+                    th details
+                each company_info, index in company_information 
+                    tr 
+                        th #{index}   
+                        th #{company_info.userID}
+                        th #{company_info.nick_name} 
+                        th #{company_info.office_position_name}
+                        th #{company_info.annual_salary}
+                        th #{company_info.email}
+                        th #{company_info.phone_number}
+                        th 
+                            a(href=`/mainpage/company_list/employee_details/${company_info.userID}?company_id=${company_id}`) link
+                        
+                
+
+

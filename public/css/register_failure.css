@@ -15,6 +15,9 @@ body {
 .page_contents h1 {
 	font-size: 50px;
 }
+.page_contents h2 {
+	font-size: 25px;
+}
 
 button {
     width: 150%;

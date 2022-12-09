@@ -21,9 +21,9 @@ app.use(cors());
 
 app.locals.pretty = true; // html 편하게 보기
 
+app.engine(`pug`, require(`pug`).__express);
+app.set(`views`, path.join(__dirname, 'views')); //
 app.set('view engine', `pug`); // 템플릿 엔진 페이지 생성하기 위해 있는 것 ?
-app.set(`views`, `./views`); //
-app.engine(`html`, require(`pug`).renderFile);
 
 // app.use(express.static(path.join(__dirname,`public`)));
 

@@ -54,5 +54,9 @@ module.exports = () => {
         my_information_router();
     });
 
+    router.get(``,(req, res) => {
+        
+    })
+
     return router;
 }

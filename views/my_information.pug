@@ -1,12 +1,37 @@
 html
     head
         title= `my_info`
-        link(rel="stylesheet", href="../public/css/my_information.css")
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel="stylesheet", href="/public/css/my_information.css")
     body
         div(class= 'page_contents')
-            h2 my_info 
-            h2 my_user_id : #{my_user_id}
-            h2 my_email : #{my_email} 
-            each my_info, index in my_information
-                ul 
-                    li= (index + 1) + ' companyID : ' + my_info.companyID + ' company_name : ' + my_info.company_name + ' position_name : ' + my_info.office_position_name + ' nick_name : ' + my_info.nick_name + ' email : ' + my_info.email + ' phone_number : ' + my_info.phone_number + ' annual_salary : ' + my_info.annual_salary
+            h1 my_info 
+            h2 my_user_id 
+            p #{my_user_id}
+            h2 my_email  
+            p #{my_email} 
+            //- each my_info, index in my_information
+            //-     ul 
+            //-         li= (index + 1) + ' companyID : ' + my_info.companyID + ' company_name : ' + my_info.company_name + ' position_name : ' + my_info.office_position_name + ' nick_name : ' + my_info.nick_name + ' email : ' + my_info.email + ' phone_number : ' + my_info.phone_number + ' annual_salary : ' + my_info.annual_salary
+            //-         div(class= 'iterator_item')
+            table 
+                tr(class= "table_attribute")  
+                    th Number
+                    th companyID
+                    th company name
+                    th position name
+                    th nick name 
+                    th email 
+                    th phone number 
+                    th annual salary
+                each my_info, index in my_information 
+                    tr 
+                        th #{index}   
+                        th #{my_info.companyID}
+                        th #{my_info.company_name} 
+                        th #{my_info.office_position_name}
+                        th #{my_info.nick_name}
+                        th #{my_info.email} 
+                        th #{my_info.phone_number}
+                        th #{my_info.annual_salary}

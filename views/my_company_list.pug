@@ -1,13 +1,32 @@
 html
     head
         title= `my_company_list`
-        link(rel="stylesheet", href="../public/css/my_company_list.css")
+        link(rel="stylesheet", href="/public/css/my_company_list.css")
     body
         div(class= 'page_contents')
             h2 my_company_list
             br
-            each company, index in temp
-                ul 
-                    li= (index + 1) + ' companyID : ' + company.companyID + ' company_name : ' + company.company_name + ' company_chief_userID : ' + company.company_chief_userID + ' nick_name : ' + company.nick_name 
-                    a(href=`/mainpage/company_list/${company.companyID}`)
-                        button(type='button' onclick = "location.href = `/mainpage/company_list/#{company.companyID}` " width="100px") company_info
+            //- each company, index in temp
+            //-     ul 
+            //-         li= (index + 1) + ' companyID : ' + company.companyID + ' company_name : ' + company.company_name + ' company_chief_userID : ' + company.company_chief_userID + ' nick_name : ' + company.nick_name 
+            //-         a(href=`/mainpage/company_list/${company.companyID}`)
+            //-             button(type='button' onclick = "location.href = `/mainpage/company_list/#{company.companyID}` " width="100px") company_info
+            table 
+                tr(class= "table_attribute")  
+                    th Number
+                    th companyID
+                    th company name
+                    th company chief userID
+                    th nick name 
+                    th details
+                each company, index in temp
+                    tr 
+                        th #{index}   
+                        th #{company.companyID}
+                        th #{company.company_name} 
+                        th #{company.company_chief_userID}
+                        th #{company.nick_name}
+                        th 
+                            a(href=`/mainpage/company_list/${company.companyID}`) link
+                                //- button(type='button' onclick = "location.href = `/mainpage/company_list/#{company.companyID}` " width="100px") company_info
+                        

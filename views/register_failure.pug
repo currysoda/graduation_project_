@@ -1,11 +1,13 @@
 html
     head
         title= `register_failure`
-        link(rel="stylesheet", href="../public/css/register_failure.css")
+        link(rel="stylesheet", href="/public/css/register_failure.css")
 
     body
         div(class= 'page_contents')
-            h1 register_failure 
+            h1 register_failure
+            br 
+            h2 #{message}
             br
             a(href='/')
                 button(type='button' onclick = "location.href = '/' " width="100px") main page
