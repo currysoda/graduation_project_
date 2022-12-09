@@ -50,12 +50,12 @@ module.exports = () => {
 
             // await console.log(sql_find_permission_id_results[0].create_user);
 
-            if(sql_find_permission_id_results[0].create_user == 1) {
+            if (sql_find_permission_id_results[0].create_user == 1) {
                 await connection.end();
-                await res.render(`employee_info_update`, { employee_id : employee_id, company_id, company_id });
+                await res.render(`employee_info_update`, { employee_id: employee_id, company_id, company_id });
             } else {
                 await connection.end();
-                await res.render(`alert.pug`, { message : "permission_deny" });
+                await res.render(`alert.pug`, { message: "permission_deny" });
             }
         }
 
@@ -69,10 +69,10 @@ module.exports = () => {
         let phone_number = req.body.phone_number;
         let position_name = req.body.position_name;
         let annual_salary = req.body.annual_salary;
-               
-                
-                
-                
+
+
+
+
 
     })
 
