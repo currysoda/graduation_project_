@@ -63,7 +63,17 @@ module.exports = () => {
     });
 
     router.post('/employee_details/update', (req, res) => {
-        
+        let nick_name = req.body.nick_name;
+        let company_id = req.body.company_id;
+        let employee_id = req.body.employee_id;
+        let phone_number = req.body.phone_number;
+        let position_name = req.body.position_name;
+        let annual_salary = req.body.annual_salary;
+               
+                
+                
+                
+
     })
 
     return router;

@@ -7,9 +7,23 @@ html
             h1 info update
             
             form(action='/mainpage/company_list/employee_details/update', method='POST')
-                p company_name 
-                input(type='text', name='company_name', value='')
+                p nick name 
+                input(type='text', name='nick_name', value='')
                 br
                 br
+                p position name
+                input(type='text', name='position_name', value='')
+                br
+                br
+                p annual salary
+                input(type='text', name='annual_salary', value='')
+                br
+                br
+                p phone number
+                input(type='text', name='phone_number', value='')
+                br
+                br
+                input(type=`hidden`, id=`employee_id`, name=`employee_id` , value = employee_id)
+                input(type=`hidden`, id=`company_id`, name=`company_id` , value = company_id)
                 button(type="submit") Submit
         

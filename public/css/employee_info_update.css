@@ -47,6 +47,10 @@ input[type=text] {
     background: #fff;
 }
 
+input:focus {
+    border: solid 1px skyblue;
+}
+
 button {
     width: 100%;
     padding: 10px 0;
