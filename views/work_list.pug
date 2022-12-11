@@ -4,22 +4,106 @@ html
         link(rel="stylesheet", href="/public/css/work_list.css")
     body
         div(class= 'page_contents')
-            h1 work_list
-            br
-            each company, index in res_object
+            a(href=`/mainpage` style={ color : `#000000`}) mainpage
+            h1 work list
+            //- br
+            //- each company, index in res_object
+            //-     ul 
+            //-         li= (index + 1) + ' | ' + 'companyID : ' + company.companyID + ' company_name : ' + company.company_name + ' company_chief_userID : ' + company.company_chief_userID
+                        
+            //-         //- a(class='button' href=`/mainpage/work_list/${company.companyID}`) work_add 
+            //-         a(href=`/mainpage/work_list/${company.companyID}`)
+            //-             button(type='button' onclick = "location.href=`/mainpage/work_list/#{company.companyID}` " width="100px") work add
+            //-         each work, index in company.work_list 
+            //-             ul 
+            //-                 li= (index + 1) +  ' | ' + ' workID : ' + work.workID + ' work_name : ' + work.work_name + ' work_description : ' + work.work_description 
+            //-                 //- a(class='button' href=`/mainpage/work_list/work_files/${work.workID}`) work_files_list
+            //-                 li
+            //-                     a(href=`/mainpage/work_list/work_files/${work.workID}`)
+            //-                         button(type='button' onclick = "location.href=`/mainpage/work_list/work_files/#{work.workID}` " width="100px") work files list
+                                
+            //-                     //- a(class='button' href=`/mainpage/work_list/work_delete/${work.workID}`) work_delete
+            //-                     a(href=`/mainpage/work_list/work_delete/${work.workID}`)
+            //-                         button(type='button' onclick = "location.href=`/mainpage/work_list/work_delete/#{work.workID}` " width="100px") work delete
+            each company, index in res_object 
                 ul 
-                    li= (index + 1) + ' | ' + 'companyID : ' + company.companyID + ' company_name : ' + company.company_name + ' company_chief_userID : ' + company.company_chief_userID 
-                    //- a(class='button' href=`/mainpage/work_list/${company.companyID}`) work_add 
-                    a(href=`/mainpage/work_list/${company.companyID}`)
-                        button(type='button' onclick = "location.href=`/mainpage/work_list/#{company.companyID}` " width="100px") work_add
-                    each work, index in company.work_list 
-                        ul 
-                            li= (index + 1) +  ' | ' + ' workID : ' + work.workID + ' work_name : ' + work.work_name + ' work_description : ' + work.work_description 
-                            //- a(class='button' href=`/mainpage/work_list/work_files/${work.workID}`) work_files_list
-                            a(href=`/mainpage/work_list/work_files/${work.workID}`)
-                                button(type='button' onclick = "location.href=`/mainpage/work_list/work_files/#{work.workID}` " width="100px") work_files_list
-                            br
-                            br
-                            //- a(class='button' href=`/mainpage/work_list/work_delete/${work.workID}`) work_delete
-                            a(href=`/mainpage/work_list/work_delete/${work.workID}`)
-                                button(type='button' onclick = "location.href=`/mainpage/work_list/work_delete/#{work.workID}` " width="100px") work_delete
+                    li 
+                        table 
+                            tr(class= "table_attribute")
+                                th Number 
+                                th companyID 
+                                th company name 
+                                th company chief userID 
+                                th work add
+                            tr
+                                td #{index}
+                                td #{company.companyID}
+                                td #{company.company_name}
+                                td #{company.company_chief_userID}
+                                td
+                                    a(href=`/mainpage/work_list/${company.companyID}`) work add
+                    li
+                        table 
+                            tr(class= "table_work_attribute")  
+                                th Number
+                                th workID
+                                th work name 
+                                th work description
+                                th work files 
+                                th delete
+                            each work, index in company.work_list
+                                tr
+                                    th #{index}
+                                    th #{work.workID}
+                                    th #{work.work_name} 
+                                    th #{work.work_description}
+                                    th 
+                                        a(href=`/mainpage/work_list/work_files/${work.workID}`) link
+                                    th 
+                                        a(href=`/mainpage/work_list/work_delete/${work.workID}` style="color:crimson") detele
+
+            //- table 
+            //-     each company, index in res_object
+            //-         tr(class= "table_attribute")  
+            //-             th Number
+            //-             th companyID
+            //-             th company name
+            //-             th work add
+            //-         tr 
+            //-             th #{index}
+            //-             th #{company.companyID}
+            //-             th #{company.company_name}
+            //-             th 
+            //-                 a(href=`/mainpage/work_list/${company.companyID}`) link
+            //-             tr(class= "table_attribute_work_list")
+            //-                 th Number 
+            //-                 th work ID 
+            //-                 th work name 
+            //-                 th work description
+            //-                 th work files list 
+            //-                 th work delete
+            //-                 each work, index in company.work_list
+            //-                  tr 
+            //-                     th #{index}
+            //-                     th #{work.workID}
+            //-                     th #{work.work_name}
+            //-                     th #{work.work_description}
+            //-             //- tr(class= "table_attribute_work_list")
+            //-             //-     th Number
+            //-             //-     th work ID
+            //-             //-     th work name
+            //-             //-     th work description
+            //-             //-     each work, index in company.work_list
+                            
+                
+            //-     //- each company_info, index in company_information 
+            //-     //-     tr 
+            //-     //-         th #{index}   
+            //-     //-         th #{company_info.userID}
+            //-     //-         th #{company_info.nick_name} 
+            //-     //-         th #{company_info.office_position_name}
+            //-     //-         th #{company_info.annual_salary}
+            //-     //-         th #{company_info.email}
+            //-     //-         th #{company_info.phone_number}
+            //-     //-         th 
+            //-     //-             a(href=`/mainpage/company_list/employee_details/${company_info.userID}?company_id=${company_id}`) link

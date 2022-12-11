@@ -76,8 +76,6 @@ module.exports = (app) => {
                     index++;
                 }
                 index = 0;
-
-
             }
 
             await for_loop();

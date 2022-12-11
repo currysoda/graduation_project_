@@ -7,22 +7,46 @@ html
         div(class= 'page_contents')
             //- a(class='button' href=`/mainpage/work_list`) work_list
             a(href=`/mainpage/work_list`)
-                button(type='button' onclick = "location.href=`/mainpage/work_list` " width="100px") work_list
-            br
-            br
+                button(type='button' onclick = "location.href=`/mainpage/work_list` " width="100px") work list
             //- a(class='button' href=`/mainpage/work_list/work_files/${work_id}/work_files_add`) work_files_add
             a(href=`/mainpage/work_list/work_files/${work_id}/work_files_add`)
-                button(type='button' onclick = "location.href=`/mainpage/work_list/work_files/#{work_id}/work_files_add` " width="100px") work_files_add
-            h1 work_files_list
-            br
-            each work_file, index in work_files_list
-                ul 
-                    li= (index + 1) + ' | ' + ' work_file_name : ' + work_file.original_file_name
-                    //- a(class='button' href=`/mainpage/work_list/work_files/${work_file.dummyID}/download`) download
-                    a(href=`/mainpage/work_list/work_files/${work_file.dummyID}/download`)
-                        button(type='button' onclick = "location.href=`/mainpage/work_list/work_files/#{work_file.dummyID}/download` " width="50px") download
-                    br
-                    //- a(class='button' href=`/mainpage/work_list/work_files/${work_file.dummyID}/work_file_delete?work_id=${work_id}`) file_delete
-                    a(href=`/mainpage/work_list/work_files/${work_file.dummyID}/work_file_delete?work_id=${work_id}`)
-                        button(type='button' onclick = "location.href=`/mainpage/work_list/work_files/#{work_file.dummyID}/work_file_delete?work_id=${work_id}` " width="50px") file_delete
-            
+                button(type='button' onclick = "location.href=`/mainpage/work_list/work_files/#{work_id}/work_files_add` " width="100px") work files add
+            h1 work files list
+            //- each work_file, index in work_files_list
+            //-     ul 
+            //-         li= (index + 1) + ' | ' + ' work_file_name : ' + work_file.original_file_name
+            //-         //- a(class='button' href=`/mainpage/work_list/work_files/${work_file.dummyID}/download`) download
+            //-         li
+            //-             div(class = 'a_button_link')
+            //-                 a(href=`/mainpage/work_list/work_files/${work_file.dummyID}/download`)
+            //-                     button(type='button' onclick = "location.href=`/mainpage/work_list/work_files/#{work_file.dummyID}/download` " width="50px") download
+            //-                 //- a(class='button' href=`/mainpage/work_list/work_files/${work_file.dummyID}/work_file_delete?work_id=${work_id}`) file_delete
+            //-                 a(href=`/mainpage/work_list/work_files/${work_file.dummyID}/work_file_delete?work_id=${work_id}`)
+            //-                     button(type='button' onclick = "location.href=`/mainpage/work_list/work_files/#{work_file.dummyID}/work_file_delete?work_id=${work_id}` " width="50px") file delete
+        
+            table 
+                colgroup 
+                    col
+                tr(class= "table_work_attribute")  
+                    th Number
+                    th work file name
+                    th download
+                    th file delete
+                each work_file, index in work_files_list
+                    tr(class= "table_right")
+                        th #{index}
+                        td #{work_file.original_file_name}
+                        td
+                            a(href=`/mainpage/work_list/work_files/${work_file.dummyID}/download`) download
+                        td
+                            a(href=`/mainpage/work_list/work_files/${work_file.dummyID}/work_file_delete?work_id=${work_id}` style="color:crimson") file delete
+              
+              
+                //-         
+                //-     tr
+                //-         th #{index}
+                //-         th #{work.workID}
+                //-         th #{work.work_name} 
+                //-         th #{work.work_description}
+                //-         th 
+                    

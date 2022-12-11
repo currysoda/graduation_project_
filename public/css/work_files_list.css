@@ -5,6 +5,26 @@ body {
     font-family: 'Jeju Hallasan', Georgia;
 }
 
+li {
+    list-style: none;
+}
+
+a {
+    width: 10%;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:link {
+	color: skyblue;
+}
+a:visited {
+	color: skyblue;
+}
+
 .page_contents {
     padding: 100px;
     display: flex;
@@ -39,20 +59,8 @@ p {
     font-size: 20px;
 }
 
-input[type=text],
-input[type=password] {
-    width: calc(100% - 57px);
-    height: 36px;
-    margin: 13px 0 0 -5px;
-    padding-left: 10px;
-    border-radius: 0 5px 5px 0;
-    border: solid 1px #cbc9c9;
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
-    background: #fff;
-}
-
 button {
-    width: 150%;
+    width: 100%;
     padding: 10px 0;
     margin: 10px auto;
     border-radius: 5px;
@@ -81,3 +89,50 @@ ul button{
     color: black;
 }
 
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+	width: 70%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-radius: 8px;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+  .table_attribute th{
+	background-color: wheat;
+	text-align: center;
+  }
+
+  .table_work_attribute th {
+    background-color: lightyellow;
+    text-align: center;
+  }
+  
+  th,
+  td {
+	text-align: right;
+	border: 1px solid black;
+  }
+  
+  th {
+	padding: 8px 10px;
+	height: 48px;
+  }
+  
+  td {
+	padding: 6px 8px;
+	height: 40px;
+  }
+
+  td {
+    text-align: center;
+  }
+
+  .table_right th {
+    text-align: right;
+  }

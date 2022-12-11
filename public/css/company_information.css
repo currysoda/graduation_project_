@@ -15,6 +15,9 @@ a:link {
 a:visited {
 	color: skyblue;
 }
+a:hover {
+  text-decoration: underline;
+}
 
 .page_contents {
 	padding: 100px;

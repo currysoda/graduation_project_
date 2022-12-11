@@ -4,7 +4,7 @@ html
         link(rel="stylesheet", href="/public/css/my_company_list.css")
     body
         div(class= 'page_contents')
-            h2 my_company_list
+            h2 my company list
             br
             //- each company, index in temp
             //-     ul 
@@ -17,7 +17,6 @@ html
                     th companyID
                     th company name
                     th company chief userID
-                    th nick name 
                     th details
                 each company, index in temp
                     tr 
@@ -25,7 +24,6 @@ html
                         th #{company.companyID}
                         th #{company.company_name} 
                         th #{company.company_chief_userID}
-                        th #{company.nick_name}
                         th 
                             a(href=`/mainpage/company_list/${company.companyID}`) link
                                 //- button(type='button' onclick = "location.href = `/mainpage/company_list/#{company.companyID}` " width="100px") company_info

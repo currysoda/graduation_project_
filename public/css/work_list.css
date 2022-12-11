@@ -5,8 +5,26 @@ body {
     font-family: 'Jeju Hallasan', Georgia;
 }
 
+li {
+    list-style: none;
+
+}
+
+a {
+	text-decoration: none;
+}
+a:link {
+	color: skyblue;
+}
+a:visited {
+	color: skyblue;
+}
+a:hover {
+    text-decoration: underline;
+}
+
 .page_contents {
-    padding: 100px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,6 +44,7 @@ p {
     outline: none;   
     font-size: 16px;
     color: black;
+
 }
 
 h1 {
@@ -37,18 +56,6 @@ h1 {
 
 p {
     font-size: 20px;
-}
-
-input[type=text],
-input[type=password] {
-    width: calc(100% - 57px);
-    height: 36px;
-    margin: 13px 0 0 -5px;
-    padding-left: 10px;
-    border-radius: 0 5px 5px 0;
-    border: solid 1px #cbc9c9;
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
-    background: #fff;
 }
 
 button {
@@ -68,3 +75,35 @@ button:hover {
     background-color:aliceblue
 }
 
+table {
+	width: 100%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-radius: 8px;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+  .table_attribute th{
+	background-color: wheat;
+	text-align: center;
+  }
+
+  .table_work_attribute {
+    background-color: lightyellow;
+  }
+  
+  th,
+  td {
+	text-align: center;
+	border: 1px solid black;
+  }
+  
+  th {
+	padding: 8px 10px;
+	height: 48px;
+  }
+  
+  td {
+	padding: 6px 8px;
+	height: 40px;
+  }
