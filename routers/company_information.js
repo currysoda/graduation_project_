@@ -70,8 +70,34 @@ module.exports = () => {
         let position_name = req.body.position_name;
         let annual_salary = req.body.annual_salary;
 
+        console.log(nick_name);
+        console.log(company_id);
+        console.log(employee_id);
+        console.log(phone_number);
+        console.log(position_name);
+        console.log(annual_salary);
 
+        async function router_sequence() {
 
+            const connection = await db();
+
+            let sql_find_permission_id = 'SELECT `create_user` FROM `permission_list` WHERE `userID` = ? AND `companyID` = ?;';
+            let values_find_permission_id = [login_user_id, company_id];
+
+            const [sql_find_permission_id_results] = await connection.execute(sql_find_permission_id, values_find_permission_id);
+
+            // await console.log(sql_find_permission_id_results[0].create_user);
+
+            if (sql_find_permission_id_results[0].create_user == 1) {
+                await connection.end();
+                await res.render(`employee_info_update`, { employee_id: employee_id, company_id, company_id });
+            } else {
+                await connection.end();
+                await res.render(`alert.pug`, { message: "permission_deny" });
+            }
+        }
+
+        router_sequence();
 
 
     })
