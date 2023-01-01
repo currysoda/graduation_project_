@@ -82,14 +82,13 @@ module.exports = (app) => {
         let work_id = req.body.work_id;
         let company_id = req.body.company_id;
         let upload_file = req.file;
-
+        upload_file.originalname = iconv.decode(upload_file.originalname, 'utf-8');
         // console.log(work_id);
         // console.log(company_id);
         // console.log(upload_file);
         // console.log(upload_file.fieldname);
         // console.log(upload_file.originalname);
         // console.log(typeof(upload_file.originalname));
-        upload_file.originalname = iconv.decode(upload_file.originalname, 'utf-8');
         // console.log(upload_file);
         // console.log(str_temp);
         // console.log(decodeURI(upload_file.originalname));
@@ -102,17 +101,21 @@ module.exports = (app) => {
 
             // await console.log(`${work_id}`);
             const connection = await db();
-            await connection.execute(sql_create_work_file, values_create_work_file);
-            await connection.end();
+
+            try{
+                await connection.execute(sql_create_work_file, values_create_work_file);
+                await connection.end();
+
+                await res.redirect(`/mainpage/work_list/work_files/${work_id}`);
+            }
+            catch(err) {
+                console.log(err)
+                await connection.end();
+                
+                await res.render(`file_upload_error.pug`);
+            }
         }
-
-        async function response_f() {
-            await router_sequence();
-
-            await res.redirect(`/mainpage/work_list/work_files/${work_id}`);
-        }
-
-        response_f();
+        router_sequence();
     });
 
     router.get(`/:dummy_id/download`, (req, res) => {

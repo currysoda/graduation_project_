@@ -1,0 +1,70 @@
+@charset "utf-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+
+body {
+    font-family: 'Jeju Hallasan', Georgia;
+}
+
+.page_contents {
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form,
+input,
+p {
+    padding: 0;
+    margin: 0;
+    outline: none;   
+    font-size: 16px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    padding: 10px 0;
+    font-size: 32px;
+    font-weight: 300;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+}
+
+input[type=text] {
+    width: calc(100% - 57px);
+    height: 36px;
+    margin: 13px 0 0 -5px;
+    padding-left: 10px;
+    border-radius: 0 5px 5px 0;
+    border: solid 1px #cbc9c9;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+    background: #fff;
+}
+
+input:focus {
+    border: solid 1px skyblue;
+}
+
+button {
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 2px solid;
+    border-color: black;
+    background: white;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+}
+
+button:hover {
+    background-color:aliceblue
+}
+

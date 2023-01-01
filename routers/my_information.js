@@ -29,7 +29,7 @@ module.exports = () => {
             // console.log(user_id);
             // console.log(typeof(user_id));
 
-            let sql_find_my_information = `SELECT * FROM user_rel_company_list NATURAL JOIN company_list WHERE userID = ?`;
+            let sql_find_my_information = "SELECT * FROM user_rel_company_list NATURAL JOIN company_list WHERE userID = ? ORDER BY `companyID`;";
             let values_find_my_information = [user_id];
 
             const [sql_find_my_information_results, sql_find_my_information_fields] = await connection.execute(sql_find_my_information, values_find_my_information);

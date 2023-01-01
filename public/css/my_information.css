@@ -1,0 +1,128 @@
+@charset "utf-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+@import url(//fonts.googleapis.com/css?family=Lato&display=swap);
+
+body {
+	font-family: 'Jeju Hallasan', Georgia;
+}
+
+a {
+	text-decoration: none;
+
+}
+a:link {
+	color: black;
+}
+a:visited {
+	color: black;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+	list-style: none;
+	padding-left: 0px;
+}
+
+.page_contents {
+	padding: 100px;
+	padding-top: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.page_contents h1 {
+	font-size: 50px;
+}
+
+.page_contents h2 {
+	font-size: 20px;
+	padding: 10px;
+	margin: 0px;
+}
+
+.page_contents p {
+	font-size: 20px;
+	padding: 10px;
+	margin: 0px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+    border: 2px solid;
+}
+
+.mainpage_img {
+	padding: 10px;
+}
+
+button {
+    width: 10%;
+    padding: 10px 0;
+    margin: 0px auto;
+    border-radius: 5px;
+    border: 2px solid;
+    border-color: black;
+    background: white;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    font-family: 'Jeju Hallasan', Georgia;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+button:hover {
+    background-color:aliceblue
+}
+
+* {
+	box-sizing: border-box;
+  }
+  
+  body {
+	margin: 0;
+	padding: 0;
+  }
+  
+  .content {
+	margin: 20px;
+  }
+  
+  table {
+	width: 50%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-radius: 8px;
+  }
+
+  .table_attribute th{
+	background-color: wheat;
+	text-align: center;
+  }
+  
+  th,
+  td {
+	text-align: left;
+	border: 1px solid black;
+  }
+  
+  th {
+	padding: 8px 10px;
+	height: 48px;
+  }
+  
+  td {
+	padding: 6px 8px;
+	height: 40px;
+  }
+  
+  
+  
+  @media(max-width: 540px) {
+	.content {
+	  overflow: auto;
+	  max-width: 100%;
+	}
+  }

@@ -1,0 +1,138 @@
+@charset "utf-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+
+body {
+    font-family: 'Jeju Hallasan', Georgia;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    width: 10%;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:link {
+	color: skyblue;
+}
+a:visited {
+	color: skyblue;
+}
+
+.page_contents {
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_class {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form,
+input,
+p {
+    padding: 0;
+    margin: 0;
+    outline: none;   
+    font-size: 16px;
+    color: black;
+}
+
+h1 {
+    padding: 10px 0;
+    font-size: 32px;
+    font-weight: 300;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 2px solid;
+    border-color: black;
+    background: white;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+}
+
+button:hover {
+    background-color:aliceblue
+}
+
+ul button{
+    width: 50%;
+    padding: 10px 0;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 2px solid;
+    border-color: black;
+    background: white;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+	width: 70%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-radius: 8px;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+  .table_attribute th{
+	background-color: wheat;
+	text-align: center;
+  }
+
+  .table_work_attribute th {
+    background-color: lightyellow;
+    text-align: center;
+  }
+  
+  th,
+  td {
+	text-align: right;
+	border: 1px solid black;
+  }
+  
+  th {
+	padding: 8px 10px;
+	height: 48px;
+  }
+  
+  td {
+	padding: 6px 8px;
+	height: 40px;
+  }
+
+  td {
+    text-align: center;
+  }
+
+  .table_right th {
+    text-align: right;
+  }
