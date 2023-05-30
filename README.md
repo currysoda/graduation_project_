@@ -1,5 +1,8 @@
 # graduation_project_personnelmanagement
 
+졸업 작품 (미완성 제출)
+
+
 ```
 │  .gitignore
 │  app.js
