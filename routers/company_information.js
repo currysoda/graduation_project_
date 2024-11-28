@@ -2,6 +2,8 @@ var express = require(`express`);
 var router = require(`express`).Router();
 var db = require(`../lib/db`);
 var inspect = require(`object-inspect`);
+var path = require(`path`);
+var sanitize_html = require(`sanitize-html`);
 
 module.exports = () => {
 
@@ -20,16 +22,86 @@ module.exports = () => {
             // console.log(inspect(sql_find_company_details_results));
 
             res_object = await sql_find_company_details_results;
+
+            await connection.end();
         }
 
         async function company_information_router() {
             await company_details();
 
-            await res.render(`company_information`, { company_information : res_object, company_id : company_id });
+            await res.render(`company_information`, { company_information: res_object, company_id: company_id });
         }
 
         company_information_router();
     });
+
+    router.get('/employee_details/:user_id', (req, res) => {
+        let employee_id = req.params.user_id;
+        let login_user_id = req.session.passport.user.userID;
+        let company_id = req.query.company_id;
+
+        async function router_sequence() {
+
+            const connection = await db();
+
+            let sql_find_permission_id = 'SELECT `create_user` FROM `permission_list` WHERE `userID` = ? AND `companyID` = ?;';
+            let values_find_permission_id = [login_user_id, company_id];
+
+            const [sql_find_permission_id_results] = await connection.execute(sql_find_permission_id, values_find_permission_id);
+
+            // await console.log(sql_find_permission_id_results[0].create_user);
+
+            if (sql_find_permission_id_results[0].create_user == 1) {
+                await connection.end();
+                await res.render(`employee_info_update`, { employee_id: employee_id, company_id, company_id });
+            } else {
+                await connection.end();
+                await res.render(`alert.pug`, { message: "permission_deny" });
+            }
+        }
+
+        router_sequence();
+    });
+
+    router.post('/employee_details/update', (req, res) => {
+        let company_id = sanitize_html(req.body.company_id);
+        let employee_id = sanitize_html(req.body.employee_id);
+
+        let nick_name = sanitize_html(req.body.nick_name);
+        let phone_number = sanitize_html(req.body.phone_number);
+        let position_name = sanitize_html(req.body.position_name);
+        let annual_salary = sanitize_html(req.body.annual_salary);
+
+        // console.log(nick_name);
+        // console.log(company_id);
+        // console.log(employee_id);
+        // console.log(phone_number);
+        // console.log(position_name);
+        // console.log(annual_salary);
+
+        async function router_sequence() {
+
+            const connection = await db();
+
+            let sql_update_user_info = "UPDATE user_rel_company_list SET nick_name = ?,phone_number=?,office_position_name=?, annual_salary=? WHERE `companyID` = ? AND `userID`= ?;";
+            let values_update_user_info = [nick_name, phone_number, position_name, Number(annual_salary), company_id, employee_id];
+
+            try {
+                await connection.execute(sql_update_user_info, values_update_user_info);
+                await connection.end();
+
+                // await res.send(`완료`);
+                await res.redirect(`/mainpage/company_list/${company_id}`);
+            }
+            catch (e) {
+                console.log(e);
+                await connection.end();
+                await res.render(`information_update_error.pug`);
+            }
+        }
+
+        router_sequence();
+    })
 
     return router;
 }

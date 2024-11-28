@@ -1,0 +1,29 @@
+html
+    head
+        title employ info update
+        link(rel="stylesheet", href="/public/css/employee_info_update.css")
+    body
+        div(class='page_contents')
+            h1 info update
+            
+            form(action='/mainpage/company_list/employee_details/update', method='POST')
+                p nick name 
+                input(type='text', name='nick_name', value='')
+                br
+                br
+                p position name
+                input(type='text', name='position_name', value='')
+                br
+                br
+                p annual salary(정수입력)
+                input(type='text', name='annual_salary', value='')
+                br
+                br
+                p phone number
+                input(type='text', name='phone_number', value='')
+                br
+                br
+                input(type=`hidden`, id=`employee_id`, name=`employee_id` , value = employee_id)
+                input(type=`hidden`, id=`company_id`, name=`company_id` , value = company_id)
+                button(type="submit") Submit
+        

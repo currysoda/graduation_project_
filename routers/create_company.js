@@ -154,7 +154,8 @@ module.exports = () => {
                         fs.mkdirSync(mkdir_company);
                     }
 
-                    res.status(201).render(`create_company_confirm`);
+                    await res.redirect(`/mainpage`);
+                    // res.status(201).render(`create_company_confirm`);
                 }
             }
 

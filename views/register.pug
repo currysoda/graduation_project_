@@ -2,14 +2,15 @@
 html
     head
         title= `registerPage` 
+        link(rel="stylesheet", href="/public/css/account_register.css")
     body
-        h1 Register Account
-          form(action='/account_register/register_confirm', method='POST')
-            p
-                | email:
+        div(class= 'page_contents')
+            h1 Register Account
+            form(class='form_class' action='/account_register/register_confirm', method='POST')
+                p email : 
                 input(type='text', id=`email`, name='email', value='')
                 br
-                | password: 
+                p password :  
                 input(type='password',id=`password`, name='password', value='')
                 br
-                input(type='submit', value='Submit')
+                button(type="submit") Submit
